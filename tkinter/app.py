@@ -1,4 +1,5 @@
 import time
+import asyncio
 from tkinter import *
 
 def toggle():
@@ -13,12 +14,13 @@ def toggle():
         toggle_btn.config(text='ON')
         print('on')    # включение
 
+
+
 def reset():
     print('off')
     for t in range(5, 0, -1):
-        toggle_btn.config(text='OFF {}'.format(t))
+        root.after(1000, toggle_btn.config(text='OFF {}'.format(t)))
         root.update()
-        time.sleep(1)
     toggle_btn.config(background='sky blue')
     toggle_btn.config(text='Выключатель')
 
@@ -37,5 +39,5 @@ btn1.pack()
 
 
 
-
+# asyncio.run(reset())
 root.mainloop()
